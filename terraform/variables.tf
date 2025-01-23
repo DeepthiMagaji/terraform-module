@@ -1,11 +1,11 @@
 variable "ami" {
   description = "ami for our instance"
-  type = string
+  type        = string
 }
 
 variable "instance_type" {
   description = "the instance type of our instance"
-  type = string
+  type        = string
 }
 
 #variable "sg" {
@@ -14,12 +14,12 @@ variable "instance_type" {
 
 variable "tag_name" {
   description = "name of the tag"
-  type = string
+  type        = string
 }
 
 variable "user_data" {
   description = "userdata that will install webserver bash script"
-  type = string
+  type        = string
 }
 
 #variable "iam_instance_profile" {
