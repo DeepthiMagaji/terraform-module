@@ -23,9 +23,7 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-.terraform.lock.hcl
-.gitignore
-.gitattributes
+
 
 # Include override files you do wish to add to version control using negated pattern
 #
