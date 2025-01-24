@@ -69,8 +69,13 @@ jobs:
         working-directory: ./terraform
 
       - name: Run Checkov
-        run: checkov -v
-        working-directory: ./terraform
+        run: checkov -d ./terraform --output json > checkov_results.json
+
+      - name: Upload Checkov results as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: checkov-results
+          path: checkov_results.json
 
       - name: Install Go dependencies
         run: go mod tidy
