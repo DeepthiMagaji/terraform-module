@@ -69,11 +69,26 @@ jobs:
         working-directory: ./terraform
 
       - name: Run Checkov
-        run: checkov -d ./terraform -v --output json > checkov_results.json
+        run: | 
+            checkov -d ./terraform -v --output json > checkov_results.json
+            echo "Exit code: $?"
         working-directory: ./terraform
 
       - name: Debug Directory Contents
         run: ls -R ./terraform
+
+      - name: Test Checkov Directly
+        run: checkov -d . -v
+        working-directory: ./terraform
+
+      - name: Verify Checkov Results
+        run: |
+          if [ -s ./terraform/checkov_results.json ]; then
+            echo "Results file exists and is not empty."
+          else
+            echo "Results file is empty or does not exist."
+          fi
+        working-directory: ./terraform
 
       - name: Display Checkov Results
         run: cat ./terraform/checkov_results.json
