@@ -25,6 +25,11 @@ jobs:
       - name: Install TFLint
         uses: terraform-linters/setup-tflint@v1
 
+      - name: Install Checkov
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install checkov
+
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
@@ -61,6 +66,10 @@ jobs:
 
       - name: Lint Terraform
         run: tflint
+        working-directory: ./terraform
+
+      - name: Run Checkov
+        run: checkov -v
         working-directory: ./terraform
 
       - name: Install Go dependencies
