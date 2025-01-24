@@ -65,6 +65,7 @@ jobs:
 
       - name: Install Go dependencies
         run: go mod tidy
+        working-directory: ./test
 
       #terratest
       - name: Run Terratest
