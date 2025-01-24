@@ -39,23 +39,25 @@ func TestS3Module(t *testing.T) {
     defer terraform.Destroy(t, terraformOptions)
     terraform.InitAndApply(t, terraformOptions)
 
+    // Fetch the bucket name output from Terraform
     outputBucketName := terraform.Output(t, terraformOptions, "bucket_name")
+
+    // Debug log to print the Terraform output
+    t.Logf("Terraform output - bucket_name: %s", outputBucketName)
+
+    // Compare the Terraform output with the expected value
     if outputBucketName != config.BucketName {
         t.Fatalf("Expected bucket name to be %s but got %s", config.BucketName, outputBucketName)
     }
 
-//     outputObjectKey := terraform.Output(t, terraformOptions, "object_key")
-//     if outputObjectKey != config.ObjectKey {
-//    		t.Fatalf("Expected object key to be %s but got %s", config.ObjectKey, outputObjectKey)
-//    	}
-//
-//    	outputBucketName := terraform.Output(t, terraformOptions, "object_source")
-//         if outputBucketName != config.ObjectSource {
-//             t.Fatalf("Expected bucket name to be %s but got %s", config.ObjectSource, outputObjectSource)
-//         }
-//
-//    	// Ensure cleanup works by checking that the bucket was destroyed
-//    	if terraform.Output(t, terraformOptions, "bucket_name") != "" {
-//    	    t.Fatalf("Bucket was not destroyed successfully. It still exists!")
-//     }
+    // Uncomment and adjust other assertions as needed
+    // outputObjectKey := terraform.Output(t, terraformOptions, "object_key")
+    // if outputObjectKey != config.ObjectKey {
+    //     t.Fatalf("Expected object key to be %s but got %s", config.ObjectKey, outputObjectKey)
+    // }
+
+    // Ensure cleanup works by checking that the bucket was destroyed
+    // if terraform.Output(t, terraformOptions, "bucket_name") != "" {
+    //     t.Fatalf("Bucket was not destroyed successfully. It still exists!")
+    // }
 }
