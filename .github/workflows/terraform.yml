@@ -69,7 +69,7 @@ jobs:
         working-directory: ./terraform
 
       - name: Run Checkov
-        run: checkov -d ./terraform -v --output json > ./terraform/checkov_results.json
+        run: checkov -d ./terraform -v --output json > checkov_results.json
         working-directory: ./terraform
 
 
