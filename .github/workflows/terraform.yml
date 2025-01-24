@@ -67,9 +67,17 @@ jobs:
         run: go mod tidy
         working-directory: ./test
 
+      - name: Install Terratest Dependencies
+        working-directory: ./test
+        run: |
+          go mod init github.com/DeepthiMagaji/terraform-module/test || true
+          go get github.com/gruntwork-io/terratest/modules/terraform
+          go mod tidy
+
       #terratest
       - name: Run Terratest
-        run: go test -v test/s3_test.go
+        working-directory: ./test
+        run: go test -v s3_test.go
 
       # Step 6: Terraform Plan
       - name: Terraform Plan
