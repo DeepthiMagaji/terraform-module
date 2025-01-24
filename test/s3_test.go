@@ -43,4 +43,14 @@ func TestS3Module(t *testing.T) {
     if outputBucketName != config.BucketName {
         t.Fatalf("Expected bucket name to be %s but got %s", config.BucketName, outputBucketName)
     }
+
+    outputObjectKey := terraform.Output(t, terraformOptions, "object_key")
+    if outputObjectKey != config.ObjectKey {
+   		t.Fatalf("Expected object key to be %s but got %s", config.ObjectKey, outputObjectKey)
+   	}
+
+   	// Ensure cleanup works by checking that the bucket was destroyed
+   	if terraform.Output(t, terraformOptions, "bucket_name") != "" {
+   	    t.Fatalf("Bucket was not destroyed successfully. It still exists!")
+    }
 }
