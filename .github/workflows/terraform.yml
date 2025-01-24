@@ -66,6 +66,7 @@ jobs:
       - name: Install Go dependencies
         run: go mod tidy
 
+      #terratest
       - name: Run Terratest
         run: go test -v test/s3_test.go
 
