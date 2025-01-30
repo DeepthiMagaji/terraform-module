@@ -72,7 +72,6 @@ jobs:
         run: chmod -R 777 ./terraform
         working-directory: ./terraform
 
-
       - name: Run Checkov
         run: | 
             checkov -d ./terraform -v --output json > checkov_results.json
