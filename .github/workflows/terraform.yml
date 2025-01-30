@@ -68,10 +68,6 @@ jobs:
         run: tflint
         working-directory: ./terraform
 
-      - name: Ensure write permissions for the directory
-        run: chmod -R 777 ./terraform
-        working-directory: ./terraform
-
       - name: Run Checkov
         run: | 
             checkov -d ./terraform -v --output json > checkov_results.json
