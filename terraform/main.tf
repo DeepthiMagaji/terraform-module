@@ -19,7 +19,7 @@ module "compute" {
   tag_name             = var.tag_name
   sg                   = module.security.webserver_sg
   iam_instance_profile = module.iam.s3_profile
-  user_data            = var.user_data
+  user_data            = file("../userdata.tpl")
 }
 
 module "security" {
@@ -44,3 +44,4 @@ module "s3" {
   object_key    = var.object_key
   object_source = var.object_source
 }
+

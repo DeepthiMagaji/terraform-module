@@ -17,10 +17,10 @@ variable "tag_name" {
   type        = string
 }
 
-variable "user_data" {
-  description = "userdata that will install webserver bash script"
-  type        = string
-}
+#variable "user_data" {
+#  description = "userdata that will install webserver bash script"
+#  type        = string
+#}
 
 #variable "iam_instance_profile" {
 #  description = "iam instance profile for the ec2 instance"
@@ -74,3 +74,5 @@ variable "object_source" {
 variable "region" {
   type = string
 }
+
+
